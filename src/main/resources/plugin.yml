@@ -1,0 +1,22 @@
+name: CMIRecipes
+version: '1.0.0'
+main: me.seetch.cmirecipes.CMIRecipes
+api-version: '1.20'
+authors: [ seetch ]
+depend:
+  - CMI
+commands:
+  cmirecipes:
+    description: Просмотреть все кастомные рецепты из CMI
+    usage: /cmirecipes [player]
+    permission: cmirecipes.use
+    aliases:
+      - crafts
+      - recipes
+permissions:
+  cmirecipes.use:
+    description: Позволяет использовать команду для себя
+    default: true
+  cmirecipes.others:
+    description: Позволяет использовать команду для другого игрока
+    default: op
