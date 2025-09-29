@@ -1,30 +1,30 @@
-# Настройка сообщений.
+# Message configuration.
 messages:
-  # Сообщение для консоли при неправильном использовании
-  console_error: "Консоль не может использовать эту команду без аргументов."
-  # Сообщение о недостатке прав для других игроков
-  no_permission_others: "У вас нет прав на выполнение этой команды для другого игрока."
-  # Сообщение об ошибке при неверном использовании команды
-  wrong_usage: "Использование: %usage%"
-  # Сообщение при отсутствии кастомных рецептов
-  no_recipes: "Не найдено кастомных рецептов в CMI."
-  # Сообщение при неверном имени игрока
-  player_not_found: "Игрок не найден: %player%"
+  # Message for console when using command incorrectly
+  console_error: "Console cannot use this command without arguments."
+  # Message for lacking permission to use command on other players
+  no_permission_others: "You don't have permission to use this command on other players."
+  # Message for incorrect command usage
+  wrong_usage: "Usage: %usage%"
+  # Message when no custom recipes are found
+  no_recipes: "No custom recipes found in CMI."
+  # Message for invalid player name
+  player_not_found: "Player not found: %player%"
 
-# Здесь можно настроить внешний вид главного меню и меню деталей рецепта
+# Configure the appearance of main menu and recipe detail menu
 gui-pattern:
-  # Настройки главного меню (список рецептов)
+  # Main menu settings (recipe list)
   main-menu:
-    # Заголовок GUI
-    title: "Кастомные крафты"
-    # Количество строк (1-6)
+    # GUI title
+    title: "Custom Crafts"
+    # Number of rows (1-6)
     rows: 6
-    # Lore для иконки рецепта
+    # Lore for recipe icon
     lore:
-      - "§e➥ §fНажмите, чтобы посмотреть"
-    # Паттерн отображения
-    # 'R' — слот для рецепта
-    # '-' — пустой слот
+      - "§e➥ §fClick to view"
+    # Display pattern
+    # 'R' - slot for recipe
+    # '-' - empty slot
     pattern:
       - "----------"
       - "--RRRRRR--"
@@ -33,25 +33,25 @@ gui-pattern:
       - "--RRRRRR--"
       - "----------"
 
-  # Настройки меню деталей рецепта (3x3 сетка + результат + кнопка "Назад")
+  # Recipe detail menu settings (3x3 grid + result + back button)
   detail-menu:
-    # Заголовок GUI
-    title: "Просмотр крафта"
-    # Количество строк (1-6)
+    # GUI title
+    title: "View Craft"
+    # Number of rows (1-6)
     rows: 6
-    # Настройки кнопки "Назад"
+    # Back button settings
     back-button:
-      # Материал иконки (например, BARRIER, BOOK, и т.д.)
+      # Icon material (e.g., BARRIER, BOOK, etc.)
       material: "ARROW"
-      # Название иконки
-      name: "§cВернуться назад"
-      # Описание иконки (lore)
+      # Icon name
+      name: "§cGo Back"
+      # Icon description (lore)
       lore: [ ]
-    # Паттерн отображения
-    # 'I' — слот ингредиента (3x3 сетка)
-    # 'R' — слот результата
-    # 'B' — слот кнопки "Назад"
-    # '-' — пустой слот
+    # Display pattern
+    # 'I' - ingredient slot (3x3 grid)
+    # 'R' - result slot
+    # 'B' - back button slot
+    # '-' - empty slot
     recipe-pattern:
       - "----------"
       - "--III-----"

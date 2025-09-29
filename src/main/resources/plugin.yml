@@ -7,7 +7,7 @@ depend:
   - CMI
 commands:
   cmirecipes:
-    description: Просмотреть все кастомные рецепты из CMI
+    description: View all custom recipes from CMI
     usage: /cmirecipes [player]
     permission: cmirecipes.use
     aliases:
@@ -15,8 +15,8 @@ commands:
       - recipes
 permissions:
   cmirecipes.use:
-    description: Позволяет использовать команду для себя
+    description: Allows using the command for yourself
     default: true
   cmirecipes.others:
-    description: Позволяет использовать команду для другого игрока
+    description: Allows using the command for another player
     default: op

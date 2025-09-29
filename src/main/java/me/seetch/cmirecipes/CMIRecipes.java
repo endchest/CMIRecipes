@@ -4,7 +4,6 @@ import com.Zrips.CMI.CMI;
 import dev.triumphteam.gui.builder.item.ItemBuilder;
 import dev.triumphteam.gui.guis.Gui;
 import dev.triumphteam.gui.guis.GuiItem;
-import net.Zrips.CMILib.CMILib;
 import net.Zrips.CMILib.Recipes.CMIRecipe;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -29,7 +28,7 @@ public final class CMIRecipes extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         config = getConfig();
-        getCommand("cmirecipes").setExecutor(this::onCommand);
+        getCommand("cmirecipes").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -38,33 +37,33 @@ public final class CMIRecipes extends JavaPlugin {
                 openRecipesGUI((Player) sender);
                 return true;
             } else {
-                sender.sendMessage(getConfigString("messages.console_error", "Консоль не может использовать эту команду без аргументов."));
+                sender.sendMessage(getConfigString("messages.console_error"));
                 return true;
             }
         } else if (args.length == 1) {
             if (sender.hasPermission("cmirecipes.others")) {
                 Player target = Bukkit.getPlayerExact(args[0]);
                 if (target == null) {
-                    String message = getConfigString("messages.player_not_found", "Игрок не найден: %player%");
+                    String message = getConfigString("messages.player_not_found");
                     message = message.replace("%player%", args[0]);
                     sender.sendMessage(message);
                     return true;
                 }
                 openRecipesGUI(target);
             } else {
-                sender.sendMessage(getConfigString("messages.no_permission_others", "У вас нет прав на выполнение этой команды для другого игрока."));
+                sender.sendMessage(getConfigString("messages.no_permission_others"));
             }
             return true;
         } else {
-            String message = getConfigString("messages.wrong_usage", "Использование: %usage%");
-            message = message.replace("%usage%", getConfigString("command.usage", "/cmirecipes [player]"));
+            String message = getConfigString("messages.wrong_usage");
+            message = message.replace("%usage%", getConfigString("command.usage"));
             sender.sendMessage(message);
             return true;
         }
     }
 
     private void openRecipesGUI(Player player) {
-        String title = getConfigString("gui-pattern.main-menu.title", "CMI Custom Recipes");
+        String title = getConfigString("gui-pattern.main-menu.title");
         List<String> pattern = getConfigStringList("gui-pattern.main-menu.pattern");
         int rows = config.getInt("gui-pattern.main-menu.rows", 6);
         List<String> lore = getConfigStringList("gui-pattern.main-menu.lore");
@@ -77,7 +76,7 @@ public final class CMIRecipes extends JavaPlugin {
         Map<String, CMIRecipe> recipes = CMI.getInstance().getRecipeManager().getCustomRecipes();
 
         if (recipes.isEmpty()) {
-            player.sendMessage(getConfigString("messages.no_recipes", "Не найдено кастомных рецептов в CMI."));
+            player.sendMessage(getConfigString("messages.no_recipes"));
             return;
         }
 
@@ -114,7 +113,7 @@ public final class CMIRecipes extends JavaPlugin {
     }
 
     private void openRecipeDetails(Player player, CMIRecipe recipe) {
-        String title = getConfigString("gui-pattern.detail-menu.title", "Recipe");
+        String title = getConfigString("gui-pattern.detail-menu.title");
 
         int rows = config.getInt("gui-pattern.detail-menu.rows", 6);
         List<String> recipePattern = getConfigStringList("gui-pattern.detail-menu.recipe-pattern");
@@ -152,8 +151,8 @@ public final class CMIRecipes extends JavaPlugin {
 
                     detailGui.setItem(slot, itemBuilder.asGuiItem());
                 } else if (c == 'B') {
-                    String backMaterial = getConfigString("gui-pattern.detail-menu.back-button.material", "ARROW");
-                    String backName = getConfigString("gui-pattern.detail-menu.back-button.name", "§cВернуться назад");
+                    String backMaterial = getConfigString("gui-pattern.detail-menu.back-button.material");
+                    String backName = getConfigString("gui-pattern.detail-menu.back-button.name");
                     List<String> backLore = getConfigStringList("gui-pattern.detail-menu.back-button.lore");
 
                     Material material = Material.getMaterial(backMaterial.toUpperCase());
@@ -197,8 +196,8 @@ public final class CMIRecipes extends JavaPlugin {
         return null;
     }
 
-    private String getConfigString(String path, String defaultValue) {
-        return config.getString(path, defaultValue);
+    private String getConfigString(String path) {
+        return config.getString(path);
     }
 
     private List<String> getConfigStringList(String path) {
