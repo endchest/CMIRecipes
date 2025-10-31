@@ -71,6 +71,7 @@ public final class CMIRecipes extends JavaPlugin {
         Gui gui = Gui.gui()
                 .title(Component.text(title))
                 .rows(rows)
+                .disableAllInteractions()
                 .create();
 
         Map<String, CMIRecipe> recipes = CMI.getInstance().getRecipeManager().getCustomRecipes();
@@ -121,6 +122,7 @@ public final class CMIRecipes extends JavaPlugin {
         Gui detailGui = Gui.gui()
                 .title(Component.text(title))
                 .rows(rows)
+                .disableAllInteractions()
                 .create();
 
         List<ItemStack> ingredients = getIngredients(recipe);
